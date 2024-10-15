@@ -21,6 +21,9 @@ RUN apt-get update && apt-get install -y \
         tidy \
         zip
 
+# Set .htaccess file
+COPY htaccess.txt /var/www/html/.htaccess
+
 # Set the working directory
 WORKDIR /var/www/html
 
