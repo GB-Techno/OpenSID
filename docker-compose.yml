@@ -1,9 +1,10 @@
 version: '3.8'
 
 services:
+
+  # Web Service
   web:
     image: opendesa:latest
-    # image: php:8.2-apache
     container_name: opendesa_web
     build:
       context: .
@@ -19,7 +20,7 @@ services:
     networks:
       - app-network
 
-
+  # Database Service
   db:
     image: mysql:8.0
     container_name: opendesa_db
