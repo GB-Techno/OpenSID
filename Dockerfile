@@ -1,10 +1,10 @@
-# Use an official PHP image with Apache and version 8.1.30
+# Gunakan container PHP dan Apache dengan versi 8.1.30
 FROM php:8.1.30-apache
 
-# Install system dependencies and PHP extensions
-# gd: Require libpng-dev, libjpeg-dev, libfreetype6-dev
-# tidy: Require libzip-dev, libtidy-dev
-# zip: Require libzip-dev
+# Instal dependensi sistem dan ekstensi PHP
+# gd: Memerlukan libpng-dev, libjpeg-dev, libfreetype6-dev
+# tidy: Memerlukan libzip-dev, libtidy-dev
+# zip: Memerlukan libzip-dev
 RUN apt-get update && apt-get install -y \
     libpng-dev \
     libjpeg-dev \
@@ -21,11 +21,11 @@ RUN apt-get update && apt-get install -y \
         tidy \
         zip
 
-# Set .htaccess file
-COPY htaccess.txt /var/www/html/.htaccess
-
-# Set the working directory
+# Mengatur direktori kerja
 WORKDIR /var/www/html
 
-# Expose port 80 for Apache
+# Mengekspos port 80 untuk Apache
 EXPOSE 80
+
+# Start Apache
+CMD ["apache2-foreground"]
